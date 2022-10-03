@@ -24,14 +24,40 @@ public class Dropdown {
 		Select dd = new Select(source);	
 		dd.selectByVisibleText("Selenium");
 		
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		obj.findElement(By.xpath("//div[@id='j_idt87:country']")).click();
+		obj.findElement(By.xpath("//div[@id='j_idt87:country_panel']/div/ul/li[@data-label='India']")).click();
 		
-		WebElement source1 = obj.findElement(By.xpath("//div[@class='grid formgrid']/div/div/div[2]/select"));
-		Select dd1 = new Select(source1);
-		dd1.selectByVisibleText("India");
-	
+		Thread.sleep(3000);
 		
+		obj.findElement(By.xpath("//div[@id='j_idt87:city']/div[3]")).click();
 		
+		Thread.sleep(3000);
+		obj.findElement(By.xpath("//div[@id='j_idt87:city_panel']/div/ul/li[@data-label='Chennai']")).click();
+		String city = obj.findElement(By.xpath("//div[@id='j_idt87:city_panel']/div/ul/li[@data-label='Chennai']")).getText();
+		System.out.println(city);
+		
+		if (city.equals("Chennai")) {
+			System.out.println("City belongs to Country - Confirmed!!!");
+		} 
+		else if (city.equals("Delhi")){
+			System.out.println("City belongs to Country - confirmed!!!");
+		}
+		else if (city.equals("Bengaluru")){
+			System.out.println("City belongs to country - confirmed!!!");
+		}
+		else{
+			System.out.println("City not belongs to country");
+		}
+		
+		obj.findElement(By.xpath("//div[@id='j_idt87:auto-complete']/button/span")).click();
+		
+		obj.findElement(By.xpath("//li[text()='AWS']")).click();
+		obj.findElement(By.xpath("//label[text()='Select Language']")).click();
+		obj.findElement(By.xpath("//li[text()='Tamil']")).click();
+		Thread.sleep(3000);
+		obj.findElement(By.xpath("//label[text()='Select Values']")).click();
+		obj.findElement(By.xpath("//li[text()='இரண்டு']")).click();
 		
 	}
 
